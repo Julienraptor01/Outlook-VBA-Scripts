@@ -1,4 +1,7 @@
 Sub BulkTransferEmailsAsAttachements()
+	Const Receiver As String = "Receiver" ' TODO : Change the mail address in the macro when setting it up
+	Const CategoryName As String = "CategoryName" ' TODO : Change the category name in the macro when setting it up
+
 	Dim olMsgToSend As Outlook.MailItem
 	Dim olItem As Outlook.MailItem
 
@@ -15,12 +18,17 @@ Sub BulkTransferEmailsAsAttachements()
 		With olMsgToSend
 			.Attachments.Add olItem, olEmbeddeditem 'add the selected item we are iterating onto as an attachment
 			.Subject = "Macro - TR: " & olItem.Subject 'keep the subject of the original mail but add a prefix to it
-			.To = "Receiver" ' TODO : Change the mail address in the macro before you run it since this define the receiver email address
+			.To = Receiver 'set the receiver of the mail
 			.Display 'display the email whitout sending for debugging purposes
 			'.Send 'send the mail
 		End With
 
-		olItem.categories = "OKiADocs" 'add a category to the original mail to keep track of the mails that have been processed
+		'add a category to the original mail to keep track of the mails that have been processed
+		If olItem.categories = "" Then
+			olItem.categories = CategoryName
+		Else
+			olItem.categories = olItem.categories & "," & CategoryName
+		End If
 	Next
 
 	'both next lines are to clean up the variables
