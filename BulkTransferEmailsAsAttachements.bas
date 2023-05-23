@@ -1,4 +1,3 @@
-Attribute VB_Name = "BulkTransferEmailsAsAttachements"
 Sub BulkTransferEmailsAsAttachements()
 	Dim olMsgToSend As Outlook.MailItem
 	Dim olItem As Outlook.MailItem
