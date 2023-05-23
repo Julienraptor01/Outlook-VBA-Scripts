@@ -13,9 +13,9 @@ Sub BulkTransferEmailsAsAttachements()
 
 		With olMsgToSend
 			.Attachments.Add olItem, olEmbeddeditem
-			.Subject = "Macro-TR:" + olItem.Subject
+			.Subject = "Macro - TR:" + olItem.Subject
 			.To = "Sender" ' TODO : Change the mail address in the macro before you run it.
-			.Display
+			.Send
 		End With
 	Next
 
