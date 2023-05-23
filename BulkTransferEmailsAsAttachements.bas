@@ -19,6 +19,8 @@ Sub BulkTransferEmailsAsAttachements()
 			.Display 'display the email whitout sending for debugging purposes
 			'.Send 'send the mail
 		End With
+
+		olItem.categories = "OKiADocs" 'add a category to the original mail to keep track of the mails that have been processed
 	Next
 
 	'both next lines are to clean up the variables
