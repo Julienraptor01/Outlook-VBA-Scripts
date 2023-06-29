@@ -2,15 +2,15 @@ Sub BulkTransferEmailsAsAttachements()
 	Const Receiver As String = "Receiver" ' TODO : Change the email address in the macro when setting it up
 	Const CategoryName As String = "CategoryName" ' TODO : Change the category name in the macro when setting it up
 
-	Dim olMsgToSend As Outlook.MailItem
-	Dim olItem As Outlook.MailItem
-
 	On Error Resume Next
 	If Application.ActiveExplorer.Selection.Count = 0 Then
 	'show the user that he didn't select anything if he didn't and exit the sub
 		MsgBox ("No item selected")
-		Exit Sub ' TODO : Verify if exiting sub automatically clean up variables
+		Exit Sub
 	End If
+
+	Dim olMsgToSend As Outlook.MailItem
+	Dim olItem As Outlook.MailItem
 
 	For Each olItem In Application.ActiveExplorer.Selection
 		Set olMsgToSend = Application.CreateItem(olMailItem) 'create a new email item
